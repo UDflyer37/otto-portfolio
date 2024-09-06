@@ -1,1 +1,13 @@
+color_scheme:
+  colors:
+  - {color: '#000000', name: --primary-color}
+  - {color: '#F5F5DC', name: --secondary-color}
+  - {color: '#D2B48C', name: --accent-color}
+  - {color: '#333333', name: --text-color}
+  - {color: '#FFFFFF', name: --bg-color}
+  - {color: '#F5F5F5', name: --section-bg-1}
+  - {color: '#FAFAFA', name: --section-bg-2}
+  - {color: '#F0F0F0', name: --section-bg-3}
+  - {color: '#F8F8F8', name: --section-bg-4}
+  preset_groups: []
 roles: []
