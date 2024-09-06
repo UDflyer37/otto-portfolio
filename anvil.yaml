@@ -1,6 +1,6 @@
 allow_embedding: false
-name: Custom HTML 1
-package_name: Custom_HTML_1
+name: Otto Portfolio
+package_name: Otto_Portfolio
 runtime_options:
   client_version: '3'
   server_spec: {base: python310-standard}
