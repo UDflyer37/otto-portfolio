@@ -9,22 +9,23 @@ class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    my_element = self.dom_nodes['m']
+    self.dom_nodes['submit'].addEventListener('click', self._handle_click)
 
-
-    
-  def handle_submit(event):
-    # Prevent the form from refreshing the page
+  def _handle_click(self, event):
+    # Prevent default form submission
     event.preventDefault()
-    
-    # Capture the name and message input values using DOM nodes
-    name = document.querySelector('[anvil-name="text"]').value
-    message = document.querySelector('[anvil-name="message"]').value
-    
+
+    name = self.dom_nodes['text'].value
+    message = self.dom_nodes['message'].value
     # Call the server function to send an email
     anvil.server.call('send_email', name, message)
 
-document.querySelector('[anvil-name="submit"]').addEventListener('click', handle_submit)
+    self.dom_nodes['text'].value = ""
+    self.dom_nodes['message'].value = ""
+    alert("Message sent successfully!")
+    
+
+
 
     
       
