@@ -1,11 +1,11 @@
-from ._anvil_designer import Form1Template
+from ._anvil_designer import Home_PageTemplate
 from anvil.js.window import document
 import anvil.server
 from anvil.js import get_dom_node
 
 
 
-class Form1(Form1Template):
+class Home_Page(Home_PageTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
