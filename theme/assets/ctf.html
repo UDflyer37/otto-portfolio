@@ -1,0 +1,371 @@
+<html><head><base href="ottoportfolio.anvil.app">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTF Challenges | Alexander T. Otto</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-color: #000000;
+    --secondary-color: #F5F5DC;
+    --accent-color: #D2B48C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --section-bg-1: #F5F5F5;
+    --section-bg-2: #FAFAFA;
+  }
+  
+  body {
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  header {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 1rem 0;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  nav ul li a {
+    color: var(--bg-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: var(--accent-color);
+  }
+  
+  main {
+    padding: 4rem 0;
+  }
+  
+  h1, h2 {
+    color: var(--primary-color);
+  }
+  
+  .challenge {
+    background-color: var(--section-bg-1);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .challenge h2 {
+    margin-top: 0;
+  }
+  
+  .challenge-description {
+    margin-bottom: 1rem;
+  }
+  
+  .flag-form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .flag-form input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+  }
+  
+  .flag-form button, .hint-button {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .flag-form button:hover, .hint-button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  .challenge-status {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  
+  .hint {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+  }
+  
+  footer {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+  }
+  
+  @media (max-width: 768px) {
+    .flag-form {
+      flex-direction: column;
+    }
+    
+    .flag-form input,
+    .flag-form button,
+    .hint-button {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">ATO CTF</div>
+        <ul>
+          <li><a href="https://ottoportfolio.anvil.app">Home</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      <h1>CTF Challenges</h1>
+      <p>Welcome to my personal Capture The Flag (CTF) challenges! Test your skills in various areas of cybersecurity. Each challenge has a hidden flag that you need to find. Good luck!</p>
+      
+      <section id="challenges">
+        <h2>Total Points: <span id="total-points">0</span></h2>
+        
+        <div class="challenge">
+          <h2>Challenge 1: Crypto Conundrum (100 points)</h2>
+          <div class="challenge-description">
+            <p>A secret message has been intercepted, but it's encrypted. Can you decrypt it to find the flag?</p>
+            <p>Ciphertext: <code>Uif gmbh jt: dvscfs_xbssjps_2023</code></p>
+          </div>
+          <button class="hint-button" data-challenge="challenge1">Request Hint</button>
+          <div class="hint" id="challenge1-hint">Caesar would be proud.</div>
+          <form class="flag-form" id="challenge1-form">
+            <input type="text" placeholder="Enter flag" required>
+            <button type="submit">Submit</button>
+          </form>
+          <div class="challenge-status" id="challenge1-status"></div>
+          <div class="challenge-points" id="challenge1-points">Available Points: 100</div>
+        </div>
+        
+        <div class="challenge">
+          <h2>Challenge 2: Web Exploit (150 points)</h2>
+          <div class="challenge-description">
+            <p>There's a vulnerable web page at <a href="https://ctf.alexanderotto.com/challenge2" target="_blank">https://ctf.alexanderotto.com/challenge2</a>. Find the hidden flag in the source code.</p>
+          </div>
+          <button class="hint-button" data-challenge="challenge2">Request Hint</button>
+          <div class="hint" id="challenge2-hint">Sometimes, comments can be more than just notes.</div>
+          <form class="flag-form" id="challenge2-form">
+            <input type="text" placeholder="Enter flag" required>
+            <button type="submit">Submit</button>
+          </form>
+          <div class="challenge-status" id="challenge2-status"></div>
+          <div class="challenge-points" id="challenge2-points">Available Points: 150</div>
+        </div>
+        
+        <div class="challenge">
+          <h2>Challenge 3: Binary Buster (200 points)</h2>
+          <div class="challenge-description">
+            <p>Download this binary file and reverse engineer it to find the flag: <a href="https://ctf.alexanderotto.com/downloads/challenge3.bin" download>challenge3.bin</a></p>
+          </div>
+          <button class="hint-button" data-challenge="challenge3">Request Hint</button>
+          <div class="hint" id="challenge3-hint">The flag is hidden in a function that's never called directly.</div>
+          <form class="flag-form" id="challenge3-form">
+            <input type="text" placeholder="Enter flag" required>
+            <button type="submit">Submit</button>
+          </form>
+          <div class="challenge-status" id="challenge3-status"></div>
+          <div class="challenge-points" id="challenge3-points">Available Points: 200</div>
+        </div>
+
+        <div class="challenge">
+          <h2>Challenge 4: Hidden in Plain Sight (175 points)</h2>
+          <div class="challenge-description">
+            <p>This innocent-looking image holds a secret. Can you uncover the hidden flag?</p>
+            <img src="https://ctf.alexanderotto.com/images/stego_challenge.png" alt="Steganography challenge image" width="500" height="375">
+          </div>
+          <button class="hint-button" data-challenge="challenge4">Request Hint</button>
+          <div class="hint" id="challenge4-hint">Sometimes, what you see is not all there is. Look between the lines.</div>
+          <form class="flag-form" id="challenge4-form">
+            <input type="text" placeholder="Enter flag" required>
+            <button type="submit">Submit</button>
+          </form>
+          <div class="challenge-status" id="challenge4-status"></div>
+          <div class="challenge-points" id="challenge4-points">Available Points: 175</div>
+        </div>
+
+        <div class="challenge">
+          <h2>Challenge 5: Packet Detective (225 points)</h2>
+          <div class="challenge-description">
+            <p>We've captured some network traffic during a suspicious activity. Can you analyze it and find the hidden flag?</p>
+            <p>Download the packet capture file: <a href="https://ctf.alexanderotto.com/downloads/suspicious_traffic.pcap" download>suspicious_traffic.pcap</a></p>
+          </div>
+          <button class="hint-button" data-challenge="challenge5">Request Hint</button>
+          <div class="hint" id="challenge5-hint">Look for unusual HTTP requests. The flag might be hiding in plain sight.</div>
+          <form class="flag-form" id="challenge5-form">
+            <input type="text" placeholder="Enter flag" required>
+            <button type="submit">Submit</button>
+          </form>
+          <div class="challenge-status" id="challenge5-status"></div>
+          <div class="challenge-points" id="challenge5-points">Available Points: 225</div>
+        </div>
+
+        <div class="challenge">
+          <h2>Challenge 6: Digital Footprint (125 points)</h2>
+          <div class="challenge-description">
+            <p>Your task is to find the Twitter handle of a person using only their email address.</p>
+            <p>Email: johndoe1337@example.com</p>
+            <p>The flag is the Twitter handle (including the @ symbol) of this person.</p>
+          </div>
+          <button class="hint-button" data-challenge="challenge6">Request Hint</button>
+          <div class="hint" id="challenge6-hint">OSINT techniques can reveal surprising connections. Think about how people often use similar usernames across platforms.</div>
+          <form class="flag-form" id="challenge6-form">
+            <input type="text" placeholder="Enter flag" required>
+            <button type="submit">Submit</button>
+          </form>
+          <div class="challenge-status" id="challenge6-status"></div>
+          <div class="challenge-points" id="challenge6-points">Available Points: 125</div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Alexander T. Otto. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const forms = document.querySelectorAll('.flag-form');
+      const hintButtons = document.querySelectorAll('.hint-button');
+      let totalPoints = 0;
+      const challengePoints = {
+        challenge1: 100,
+        challenge2: 150,
+        challenge3: 200,
+        challenge4: 175,
+        challenge5: 225,
+        challenge6: 125
+      };
+      const hintUsed = {};
+
+      function updateTotalPoints() {
+        document.getElementById('total-points').textContent = totalPoints;
+      }
+
+      forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const challengeId = this.id.split('-')[0];
+          const flag = this.querySelector('input').value;
+          const statusElement = document.getElementById(`${challengeId}-status`);
+          const pointsElement = document.getElementById(`${challengeId}-points`);
+          
+          let isCorrect = false;
+          switch(challengeId) {
+            case 'challenge1':
+              isCorrect = flag.toLowerCase() === 'cyber_warrior_2023';
+              break;
+            case 'challenge2':
+              isCorrect = flag.toLowerCase() === 'hidden_in_plain_sight';
+              break;
+            case 'challenge3':
+              isCorrect = flag.toLowerCase() === 'reverse_engineering_master';
+              break;
+            case 'challenge4':
+              isCorrect = flag.toLowerCase() === 'steganography_rocks';
+              break;
+            case 'challenge5':
+              isCorrect = flag.toLowerCase() === 'wireshark_master_2023';
+              break;
+            case 'challenge6':
+              isCorrect = flag.toLowerCase() === '@johnd0ehack3r';
+              break;
+          }
+          
+          if (isCorrect && challengePoints[challengeId] > 0) {
+            let earnedPoints = challengePoints[challengeId];
+            if (hintUsed[challengeId]) {
+              earnedPoints = Math.floor(earnedPoints / 2);
+            }
+            totalPoints += earnedPoints;
+            challengePoints[challengeId] = 0;
+            statusElement.textContent = `Correct! You earned ${earnedPoints} points!`;
+            statusElement.style.color = 'green';
+            pointsElement.textContent = 'Points earned: ' + earnedPoints;
+            updateTotalPoints();
+          } else if (isCorrect) {
+            statusElement.textContent = 'Correct, but you\'ve already solved this challenge!';
+            statusElement.style.color = 'orange';
+          } else {
+            statusElement.textContent = 'Incorrect flag. Try again!';
+            statusElement.style.color = 'red';
+          }
+        });
+      });
+
+      hintButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const challengeId = this.getAttribute('data-challenge');
+          const hintElement = document.getElementById(`${challengeId}-hint`);
+          if (hintElement.style.display === 'none' || hintElement.style.display === '') {
+            hintElement.style.display = 'block';
+            this.textContent = 'Hide Hint';
+            if (!hintUsed[challengeId]) {
+              hintUsed[challengeId] = true;
+              const pointsElement = document.getElementById(`${challengeId}-points`);
+              const currentPoints = challengePoints[challengeId];
+              const newPoints = Math.floor(currentPoints / 2);
+              pointsElement.textContent = `Available Points: ${newPoints} (reduced for using hint)`;
+            }
+          } else {
+            hintElement.style.display = 'none';
+            this.textContent = 'Request Hint';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
