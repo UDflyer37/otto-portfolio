@@ -170,15 +170,21 @@
       
       <section id="challenges">
         <h2>Total Points: <span id="total-points">0</span></h2>
+        <code><h3>Using a hint halves the amount of points you can recieve on that question, so use them wisely!</h3></code>
         
         <div class="challenge">
-          <h2>Challenge 1: Crypto Conundrum (100 points)</h2>
+          <h2>Challenge 1: Cyrpto is love, crypto is life (100 points)</h2>
           <div class="challenge-description">
-            <p>A secret message has been intercepted, but it's encrypted. Can you decrypt it to find the flag?</p>
-            <p>Ciphertext: <code>Uif gmbh jt: dvscfs_xbssjps_2023</code></p>
+            <p>My friend Blaise de Vigenere sent me a link to a video, but I don't think it works. He also sent me this audio message, but all I can hear are these beeps. Can you help me?</p> 
+            <h4>zaktc://odn.cymalfo.uvd/akljy?z=HRmicP4A2I8</h4>
+            <audio controls loop>
+              <source src="https://ottoportfolio.anvil.app/_/theme/morse.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+            <p><code>(Flag Format: title_of_the_video_with_no_punctuation)</code></p>
           </div>
           <button class="hint-button" data-challenge="challenge1">Request Hint</button>
-          <div class="hint" id="challenge1-hint">Caesar would be proud.</div>
+          <div class="hint" id="challenge1-hint">Figuring out the morse code is the KEY to solving the cipher.</div>
           <form class="flag-form" id="challenge1-form">
             <input type="text" placeholder="Enter flag" required>
             <button type="submit">Submit</button>
@@ -188,12 +194,13 @@
         </div>
         
         <div class="challenge">
-          <h2>Challenge 2: Web Exploit (150 points)</h2>
+          <h2>Challenge 2: No comment... (150 points)</h2>
           <div class="challenge-description">
-            <p>There's a vulnerable web page at <a href="https://ctf.alexanderotto.com/challenge2" target="_blank">https://ctf.alexanderotto.com/challenge2</a>. Find the hidden flag in the source code.</p>
+            <p>Oh shoot, I accidentally linked my online personal diary and I can't figure out how to delete it!</p>
+            <p><code><a href="https://ottoportfolio.anvil.app/_/theme/challenge2.html" target="_blank">https://ottoportfolio.anvil.app/_/theme/challenge2.html</a></code></p>
           </div>
           <button class="hint-button" data-challenge="challenge2">Request Hint</button>
-          <div class="hint" id="challenge2-hint">Sometimes, comments can be more than just notes.</div>
+          <div class="hint" id="challenge2-hint">It's important to do regular scrubs for sensitive information from any client-side code. Even a simple HTML file can reveal secrets like API keys, credentials, internal network architectures, or even FLAGS if left unchecked!</div>
           <form class="flag-form" id="challenge2-form">
             <input type="text" placeholder="Enter flag" required>
             <button type="submit">Submit</button>
@@ -305,10 +312,10 @@
           let isCorrect = false;
           switch(challengeId) {
             case 'challenge1':
-              isCorrect = flag.toLowerCase() === 'cyber_warrior_2023';
+              isCorrect = flag.toLowerCase() === 'what_are_you_doing_in_my_swamp';
               break;
             case 'challenge2':
-              isCorrect = flag.toLowerCase() === 'hidden_in_plain_sight';
+              isCorrect = flag.toLowerCase() === 'identity_theft_is_not_a_joke_jim';
               break;
             case 'challenge3':
               isCorrect = flag.toLowerCase() === 'reverse_engineering_master';

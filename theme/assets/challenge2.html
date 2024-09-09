@@ -1,0 +1,67 @@
+<html>
+<head>
+<base href="/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge 2 | Web Exploit</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    h1 {
+        color: #2c3e50;
+        text-align: center;
+    }
+    .content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .text {
+        flex: 1;
+        padding-right: 20px; 
+    }
+    .image {
+        flex: 1;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+    <h1>Welcome to Challenge 2</h1>
+    <div class="content">
+      <div class="text">
+        <p>Dear Diary,</p>
+        <p>6/14: Everyone has called me Dwayne all day. I think Jim Halpert paid them to.</p>
+        <p>7/10: By the end of the day, my desk was about two feet closer to the copier.</p>
+        <p>7/21: Jim Halpert said there was an abandoned infant in the women's room. When I went to save the child, I saw Meredith on the can.</p>  
+        <p>11/06: This morning I knocked myself in the head with the phone.</p>
+      </div>
+      <div class="image">
+        <img src="https://ottoportfolio.anvil.app/_/theme/office.png" alt="office" width="500" height="375">
+      </div>
+    </div>
+    
+    <!-- The flag is: identity_theft_is_not_a_joke_jim -->
+    
+    <script>
+        // This script doesn't do anything interesting.
+        // Or does it? Always check the source!
+        console.log("Nothing to see here...");
+    </script>
+</body>
+</html>
