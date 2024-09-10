@@ -3,8 +3,6 @@ from anvil.js.window import document
 import anvil.server
 from anvil.js import get_dom_node
 
-
-
 class Home_Page(Home_PageTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
@@ -19,7 +17,7 @@ class Home_Page(Home_PageTemplate):
     email = self.dom_nodes['email'].value
     message = self.dom_nodes['message'].value
     # Call the server function to send an email
-    #anvil.server.call('send_email', name, email, message)
+    anvil.server.call('send_email', name, email, message)
 
     self.dom_nodes['name'].value = ""
     self.dom_nodes['email'].value = ""

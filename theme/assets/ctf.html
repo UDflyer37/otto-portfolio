@@ -1,4 +1,4 @@
-<html><head><base href="ottoportfolio.anvil.app">
+<html><head><base href="https://ottoportfolio.anvil.app/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CTF Challenges | Alexander T. Otto</title>
@@ -129,6 +129,12 @@
     background-color: var(--secondary-color);
     border-radius: 4px;
   }
+
+  .warning {
+        color: #e74c3c;
+        font-weight: bold;
+        margin-top: 20px;
+  }
   
   footer {
     background-color: var(--primary-color);
@@ -178,7 +184,7 @@
             <p>My friend Blaise de Vigenere sent me a link to a video, but I don't think it works. He also sent me this audio message, but all I can hear are these beeps. Can you help me?</p> 
             <h4>zaktc://odn.cymalfo.uvd/akljy?z=HRmicP4A2I8</h4>
             <audio controls loop>
-              <source src="https://ottoportfolio.anvil.app/_/theme/morse.wav" type="audio/wav">
+              <source src="_/theme/morse.wav" type="audio/wav">
               Your browser does not support the audio element.
             </audio>
             <p><code>(Flag Format: title_of_the_video_with_no_punctuation)</code></p>
@@ -197,7 +203,7 @@
           <h2>Challenge 2: No comment... (150 points)</h2>
           <div class="challenge-description">
             <p>Oh shoot, I accidentally linked my online personal diary and I can't figure out how to delete it!</p>
-            <p><code><a href="https://ottoportfolio.anvil.app/_/theme/challenge2.html" target="_blank">https://ottoportfolio.anvil.app/_/theme/challenge2.html</a></code></p>
+            <p><code><a href="_/theme/challenge2.html" target="_blank">https://ottoportfolio.anvil.app/_/theme/challenge2.html</a></code></p>
           </div>
           <button class="hint-button" data-challenge="challenge2">Request Hint</button>
           <div class="hint" id="challenge2-hint">It's important to do regular scrubs for sensitive information from any client-side code. Even a simple HTML file can reveal secrets like API keys, credentials, internal network architectures, or even FLAGS if left unchecked!</div>
@@ -213,6 +219,7 @@
           <h2>Challenge 3: Binary Buster (200 points)</h2>
           <div class="challenge-description">
             <p>Download this binary file and reverse engineer it to find the flag: <a href="https://ctf.alexanderotto.com/downloads/challenge3.bin" download>challenge3.bin</a></p>
+            <p class="warning">Warning: This file is part of a cybersecurity challenge. Always analyze unknown binaries in a safe, isolated environment.</p>
           </div>
           <button class="hint-button" data-challenge="challenge3">Request Hint</button>
           <div class="hint" id="challenge3-hint">The flag is hidden in a function that's never called directly.</div>
