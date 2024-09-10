@@ -1,0 +1,901 @@
+<html><head><base href="/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander T. Otto | Cyber Warfare to Civilian Tech</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-color: #000000;
+    --secondary-color: #F5F5DC;
+    --accent-color: #D2B48C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --section-bg-1: #F5F5F5;
+    --section-bg-2: #FAFAFA;
+    --section-bg-3: #F0F0F0;
+    --section-bg-4: #F8F8F8;
+  }
+  
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  header {
+    background-color: transparent;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+  
+  header.scrolled {
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--bg-color);
+  }
+
+  .menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--bg-color);
+  }
+
+  .nav-menu {
+    list-style-type: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li a {
+    color: var(--bg-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: var(--accent-color);
+  }
+  
+  .hero {
+    background-image: url(_/theme/family.jpeg);
+    background-size: cover;
+    background-position: center;
+    padding: 12rem 0 8rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    color: var(--bg-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    color: var(--bg-color);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .cta-button {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+  }
+  
+  .cta-button:hover {
+    background-color: var(--accent-color);
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .cta-button.secondary {
+    background-color: transparent;
+    border: 2px solid var(--bg-color);
+    color: var(--bg-color);
+  }
+
+  .cta-button.secondary:hover {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+  }
+  
+  section {
+    padding: 8rem 0;
+  }
+  
+  section:nth-child(odd) {
+    background-color: var(--section-bg-1);
+  }
+
+  section:nth-child(even) {
+    background-color: var(--section-bg-2);
+  }
+  
+  h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .section-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .section-content:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  .section-text,
+  .section-image {
+    flex: 1;
+  }
+
+  .section-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .section-image img.loaded {
+    opacity: 1;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .skill-item {
+    background-color: var(--bg-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .skill-item h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .skill-description, .skill-example {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-example {
+    font-style: italic;
+    color: var(--accent-color);
+    display: none;
+  }
+
+  .skill-item:hover .skill-example {
+    display: block;
+  }
+  
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+  }
+  
+  .project {
+    position: relative; 
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .project:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+  }
+  
+  .project h3 {
+    color: var(--text-color);
+  }
+
+  .project p {
+    color: var(--text-color);
+  }
+
+  .project img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+  }
+  
+  .project:hover img {
+    filter: brightness(1.1);
+  }
+
+  .project-info {
+    flex-grow: 1; 
+    padding: 2rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .project:hover .project-info {
+    background-color: var(--accent-color);
+  }
+  
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+  
+  .timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    box-sizing: border-box;
+  }
+  
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -12.5px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--primary-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .left {
+    left: 0;
+  }
+  
+  .right {
+    left: 50%;
+  }
+  
+  .right::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -15px; /* Positioning the arrow */
+    top: 12px; /* Align it vertically */
+    border-top: 8px solid transparent; /* The top of the arrow */
+    border-bottom: 8px solid transparent; /* The bottom of the arrow */
+    border-left: 12px solid var(--primary-color); /* The arrow body pointing right */
+  }
+  
+  .timeline-content {
+    padding: 20px 30px;
+    background-color: var(--bg-color);
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .timeline-content .job-description {
+    display: none;
+    margin-top: 10px;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  .timeline-content:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .timeline-content:hover .job-description {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .nav-menu.active {
+      display: flex;
+    }
+
+    .nav-menu li {
+      margin: 0.5rem 0;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .menu-toggle {
+      display: none;
+    }
+  }
+
+  footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 1024px) {
+    .section-content {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .section-content:nth-child(odd) {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .projects {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero {
+      padding: 8rem 0 4rem;
+    }
+    
+    h1 {
+      font-size: 3rem;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+    
+    .cta-button {
+      padding: 0.75rem 1.5rem;
+    }
+  }
+
+  #ctf {
+    background-color: var(--section-bg-5);
+  }
+
+  .contact-content {
+    display: flex;
+    gap: 4rem;
+  }
+
+  .contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .contact-form textarea {
+    height: 150px;
+    resize: vertical;
+  }
+
+  .contact-info {
+    flex: 1;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+  }
+
+  .social-icon:hover {
+    color: var(--accent-color);
+  }
+
+  @media (max-width: 768px) {
+    .contact-content {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animated {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .animated.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-form button {
+    cursor: pointer;
+  }
+
+  .contact-form button:hover {
+    background-color: var(--accent-color);
+  }
+</style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <nav>
+        <div class="logo">ATO</div>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#career">Career</a></li>
+          <li><a href="#ctf">CTF Challenges</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="_/theme/Alexander_Otto_Resume.pdf" target="_blank">Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="container">
+      <h1>Alexander T. Otto</h1>
+      <p class="subtitle">Transitioning Cyber Electronic Warfare Officer with experience in AI/ML, coding, data science, pentesting, and management.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="cta-button">Get in Touch</a>
+        <a href="_/theme/Alexander_Otto_Resume.pdf" class="cta-button secondary" target="_blank">Download Resume</a>
+      </div>
+    </div>
+  </section>
+  
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="section-content">
+          <div class="section-text">
+            <p>As a Cyber Electronic Warfare Officer in the Army transitioning to the civilian sector, I bring a unique blend of technical expertise and leadership skills. With a background in AI/ML, coding, data science, pentesting, and electronic warfare, I am seeking opportunities in AI/ML, software engineering, pentesting/reverse engineering, and data science. I am passionate about leveraging technology to solve complex problems and am committed to continuous learning and growth in the rapidly evolving tech landscape.</p>
+            <p>Beyond my professional pursuits, I am dedicated to giving back to the community through volunteer work, with a particular focus on mentoring and teaching youth in cyber-related fields. I believe in the power of education and aim to inspire the next generation of tech professionals.</p>
+          </div>
+          <div class="section-image">
+            <img src="_/theme/family%20photo.jpg" alt="Family Photo" width="600" height="400">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-item animated">
+            <h3>AI/ML</h3>
+            <p class="skill-description">Expertise in machine learning algorithms and artificial intelligence applications.</p>
+            <p class="skill-example">Developed neural networks, regression models, and distributed forest classifiers for prediction and classification of network packets.</p>
+          </div>
+          <div class="skill-item animated">
+            <h3>Data Science</h3>
+            <p class="skill-description">Proficient in data analysis, visualization, and statistical modeling.</p>
+            <p class="skill-example">Developed efficient data pipelines for analyzing and displaying administrative metrics that integrated Microsoft Power BI and Palantir Army Vantage (Foundry).</p>
+          </div>
+          <div class="skill-item animated">
+            <h3>Pentesting</h3>
+            <p class="skill-description">Experienced in identifying and exploiting vulnerabilities in computer systems and networks.</p>
+            <p class="skill-example">Conducted comprehensive offensive pentesting on military networks (training), identifying and exploiting critical vulnerabilities and collecting sensitive information.</p>
+          </div>
+          <div class="skill-item animated">
+            <h3>Electronic Warfare</h3>
+            <p class="skill-description">Skilled in the use of electromagnetic spectrum for offensive and defensive operations. Skilled in Electromagnetic Attack, Electromagnetic Support, and Electromagnetic Protection</p>
+            <p class="skill-example">Led electronic warfare operations to disrupt enemy communications, locate enemy emittors, and obfucation friendly electromagnetic emmissions during military exercises.</p>
+          </div>
+          <div class="skill-item animated">
+            <h3>Python</h3>
+            <p class="skill-description">Advanced proficiency in Python programming for data analysis, AI/ML, automation, and general software development.</p>
+            <p class="skill-example">Developed custom web applications using Anvil Works. Created specialized python scripts for penetration testing exploitation. Integrated Python libraries for rapid deployment of machine learning models in cybersecurity applications.</p>
+          </div>
+          <div class="skill-item animated">
+            <h3>Cybersecurity</h3>
+            <p class="skill-description">Comprehensive knowledge of cybersecurity principles, threat detection, and incident response.</p>
+            <p class="skill-example">Designed and implemented a multi-layered security architecture for a military operations.</p>
+          </div>
+          <div class="skill-item animated">
+            <h3>Leadership</h3>
+            <p class="skill-description">Proven ability to lead and motivate teams in high-pressure environments.</p>
+            <p class="skill-example">Led a team of 20+ specialists in cyber and electronic warfare operations, defining and shaping Army wide standards for Electronic Warfare.</p>
+          </div>
+          <div class="skill-item animated">
+            <h3>Project Management</h3>
+            <p class="skill-description">Experienced in managing complex technical projects from conception to completion.</p>
+            <p class="skill-example">Successfully managed all cyber and electronic warfare activites for a large-scale Army combat training center rotation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="projects">
+      <div class="container">
+        <h2>Independent Project Showcase</h2>
+        <div class="projects">
+          <a href="https://theottoagency.anvil.app/" target="_blank" class="project animated">
+            <img src="_/theme/otto_company_website.png" alt="Insurace Agency Website" width="350" height="250">
+            <div class="project-info">
+              <h3>Insurace Agency Website</h3>
+              <p>Solely developed a responsive and user-friendly website for Otto & Associates Insurance Agency in Huber Heights, Ohio as part of the companies transition to fully remote services. The site features a clean, professional design with easy navigation and utility. Integrated options for making appointments and contacting the agency to enhance user interaction. Features a fully functional user side and a protected agency portal for administrative use. Take a look!</p>
+            </div>
+          </a>
+          <a href="https://squottober.anvil.app/" target="_blank" class="project animated">
+            <img src="_/theme/squottober.png" alt="Personal Fitness Application" width="350" height="250">
+            <div class="project-info">
+              <h3>Personal Fitness Application</h3>
+              <p>Created a personal fitness application to aid in Soldier physical fitness training. Optimized for mobile use, this application provides a variety of options. Features a plate calculator function, a weight calculator function, and complete personalised workouts based on individual user capabilities. Try it out!</p>
+            </div>
+          </a>
+          <a href="https://irmsasp.anvil.app" target="_blank" class="project animated">
+            <img src="_/theme/irms.png" alt="Cyber Youth Mentorship" width="350" height="250">
+            <div class="project-info">
+              <h3>Cyber Youth Mentorship</h3>
+              <p>Developed a modular website for a volunteer afterschool youth program focused on teaching middle school students cyber concepts and skills. The site is designed to grow as new projects are completed, currently showcasing two initiatives: a face scanner utilizing Hugging Face's opensource deepface model to teach AI/ML concepts and embedded applications built from a website designed to teach beginner coding concepts. The modular design ensures future scalability and adaptability as the program evolves. Come see what the kids are learning!</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <section id="career">
+      <div class="container">
+        <h2>Career Timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item left animated">
+            <div class="timeline-content">
+              <h3>August 2022 - Present</h3>
+              <h4>Cyber Electronic Warfare Officer</h4>
+              <p>U.S. Army | 1BCT, 10th Mountain Division</p>
+              <div class="job-description">
+                <p>Led and coordinated cyber and electromagnetic activities for a light infantry brigade of approximately 3000 Soldiers, ensuring seamless integration of cyber capabilities into brigade operations, resulting in enhanced situational awareness and operational effectiveness.</p>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item right animated">
+            <div class="timeline-content">
+              <h3>July 2023 - Present</h3>
+              <h4>Date Science Team Lead</h4>
+              <p>U.S. Army | 1BCT, 10th Mountain Division</p>
+              <div class="job-description">
+                <p>Spearheaded the establishment of a cutting-edge Data Science Team within the brigade, driving the operationalization of data to enhance efficiency and deliver crucial administrative metrics for the commander. Successfully developed and implemented a data-driven solution within six (6) months of conception that established a pipeline from original data sources through Palantir Army Vantage to Microsoft Power BI.</p>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item right animated">
+            <div class="timeline-content">
+              <h3>August 2023 - May 2024</h3>
+              <h4>Electronic Warfare Commander</h4>
+              <p>U.S. Army | 10th Mountain Division</p>
+              <div class="job-description">
+                <p>Commanded an experimental specialized Electronic Warfare (EW) company, overseeing training for two Electronic Warfare platoons. Managed approximately 40 Soldiers, orchestrating EW support for division tasks and two brigades' missions in preparation for deployment.</p>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item left animated">
+            <div class="timeline-content">
+              <h3>January 2021 - August 2022</h3>
+              <h4>Army Cyber and Electronic Warfare Student</h4>
+              <p>U.S. Army</p>
+              <div class="job-description">
+                <p>Participated in advanced training in cyber operations and electronic warfare, focusing on integrating cyber capabilities into military strategies. Developed skills in network security, threat analysis, offensive and defensive operation on windows and linux OS systems, and electronic warfare tactics to enhance operational effectiveness.</p>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item right animated">
+            <div class="timeline-content">
+              <h3>December 2021</h3>
+              <h4>CompTIA Security+</h4>
+            </div>
+          </div>
+          <div class="timeline-item right animated">
+            <div class="timeline-content">
+              <h3>August 2021</h3>
+              <h4>Cisco Certified Network Associate (CCNA)</h4>
+            </div>
+          </div>
+          <div class="timeline-item left animated">
+            <div class="timeline-content">
+              <h3>August 2016 - January 2021</h3>
+              <h4>Bachelors of Science in Mechanical Engineering (3.72 GPA)</h4>
+              <p>University of Dayton</p>
+              <div class="job-description">
+                <p>Obtained a Bachelors of Science in Mechanical Engineering with a Concentration in Mechanical Energy Systems and a Minor in Military Science.</p>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item right animated">
+            <div class="timeline-content">
+              <h3>July 2018 - January 2021</h3>
+              <h4>AI/ML & Cyber Security Researcher</h4>
+              <p>University of Dayton Research Institute </p>
+              <div class="job-description">
+                <p>Conducted in-depth research in artificial intelligence and cybersecurity and comprehensive training of diverse machine learning models using extensive network data; specialized in the development and implementation of machine learning models to detect and analyze malicious packets. Collaborated with a cross-functional team to stay abreast of the latest advancements in AI and cybersecurity.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="ctf">
+      <div class="container">
+        <h2>My CTF Challenges</h2>
+        <div class="section-content">
+          <div class="section-text">
+            <p>Do you like Capture the Flag(CTF) competitions? Me too!</p>
+            <p>Welcome to my personal CTF challenge page! Here, you'll find a series of cybersecurity challenges designed to test and improve your skills in various areas such as cryptography, web exploitation, reverse engineering, and more.</p>
+            <p>Each challenge presents a unique scenario where you'll need to use your problem-solving skills and technical knowledge to find the hidden 'flag'. These challenges are designed to be both educational and engaging. Don't worry, they are not too hard, give it a try and let me know how you did!</p>
+            <a anvil-name="ctf_page" class="cta-button">My CTF Challenges</a>
+          </div>
+          <div class="section-image">
+            <img src="_/theme/army.jpg" alt="Army" width="600" height="400">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Get in Touch</h2>
+        <div class="contact-content">
+          <form class="contact-form">
+            <input type="text" anvil-name="name" placeholder="Name" required>
+            <input type="text" anvil-name="email" placeholder="Email" required>
+            <textarea anvil-name="message" placeholder="Message" required></textarea>
+            <button type="submit" anvil-name="submit" class="cta-button">Send Message</button>
+          </form>
+          
+          <div class="contact-info">
+            <p>I'm excited about new opportunities in AI/ML, software engineering, pentesting/reverse engineering, and data science. Let's connect and explore how we can work together!</p>
+            <div class="social-links">
+              <a href="mailto:ottoa98@gmail.com" class="social-icon">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/alexander-t-otto" class="social-icon">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/UDflyer37" class="social-icon">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Alexander T. Otto. All rights reserved.</p>
+    </div>
+  </footer>
+
+  
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    const header = document.getElementById('header');
+    const sticky = header.offsetTop;
+
+    function stickyHeader() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    window.onscroll = function() {
+      stickyHeader();
+    };
+
+    const animatedElements = document.querySelectorAll('.animated');
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    animatedElements.forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+  
+</body>
+</html>

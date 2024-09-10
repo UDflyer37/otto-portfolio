@@ -1,5 +1,5 @@
 components: []
 container:
-  properties: {html: '@theme:home-page.html'}
+  properties: {html: '@theme:challenge3.html'}
   type: HtmlTemplate
 is_package: true
