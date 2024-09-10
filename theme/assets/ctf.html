@@ -172,7 +172,7 @@
   <main>
     <div class="container">
       <h1>CTF Challenges</h1>
-      <p>Welcome to my personal Capture The Flag (CTF) challenges! Test your skills in various areas of cybersecurity. Each challenge has a hidden flag that you need to find. Good luck!</p>
+      <p>Welcome to my personal Capture The Flag (CTF) challenges! Test your skills in various areas of cybersecurity. Each challenge has a hidden flag that you need to find. The format for each flag will be "ATO{flag_here}". Good luck!</p>
       
       <section id="challenges">
         <h2>Total Points: <span id="total-points">0</span></h2>
@@ -187,7 +187,7 @@
               <source src="_/theme/morse.wav" type="audio/wav">
               Your browser does not support the audio element.
             </audio>
-            <p><code>(Flag Format: title_of_the_video_with_no_punctuation)</code></p>
+            <p><code>(Flag Format: ATO{title_of_the_video_with_no_punctuation})</code></p>
           </div>
           <button class="hint-button" data-challenge="challenge1">Request Hint</button>
           <div class="hint" id="challenge1-hint">Figuring out the morse code is the KEY to solving the cipher.</div>
@@ -234,11 +234,11 @@
         <div class="challenge">
           <h2>Challenge 4: Hidden in Plain Sight (175 points)</h2>
           <div class="challenge-description">
-            <p>This innocent-looking image holds a secret. Can you uncover the hidden flag?</p>
-            <img src="https://ctf.alexanderotto.com/images/stego_challenge.png" alt="Steganography challenge image" width="500" height="375">
+            <p>Look how cute my dog is! No way he's hiding any secrets...</p>
+            <img src="_/theme/bennystego.png" alt="Steganography challenge image" width="500" height="375">
           </div>
           <button class="hint-button" data-challenge="challenge4">Request Hint</button>
-          <div class="hint" id="challenge4-hint">Sometimes, what you see is not all there is. Look between the lines.</div>
+          <div class="hint" id="challenge4-hint">It's possible to hide messages, files, or even code inside of images! Always be careful when downloading things online, even seemingly harmless photos could ruin your day.</div>
           <form class="flag-form" id="challenge4-form">
             <input type="text" placeholder="Enter flag" required>
             <button type="submit">Submit</button>
@@ -317,24 +317,31 @@
           const pointsElement = document.getElementById(`${challengeId}-points`);
           
           let isCorrect = false;
+          let correctFlag = '';
           switch(challengeId) {
             case 'challenge1':
-              isCorrect = flag.toLowerCase() === 'what_are_you_doing_in_my_swamp';
+              correctFlag = 'ATO{what_are_you_doing_in_my_swamp}'
+              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge2':
-              isCorrect = flag.toLowerCase() === 'identity_theft_is_not_a_joke_jim';
+              correctFlag = 'ATO{identity_theft_is_not_a_joke_jim}'
+              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge3':
-              isCorrect = flag.toLowerCase() === 'i_need_gopherchucks';
+              correctFlag = 'ATO{i_need_gopherchucks}'
+              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge4':
-              isCorrect = flag.toLowerCase() === 'steganography_rocks';
+              correctFlag = 'ATO{holy_hand_grenade}'
+              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge5':
-              isCorrect = flag.toLowerCase() === 'wireshark_master_2023';
+              correctFlag = 'ATO{wireshark_master_2023}'
+              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge6':
-              isCorrect = flag.toLowerCase() === '@johnd0ehack3r';
+              correctFlag = 'ATO{@johnd0ehack3r}'
+              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
           }
           
