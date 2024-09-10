@@ -71,9 +71,6 @@
 #include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 
-#define FLAG "CTF{R3v3rse_3ng1n33r1ng_M4st3r}"
-#define KEY "b1n4ry_bu5t3r"
-
 int main() {
     char input[50];
     printf("Enter the key: ");
@@ -93,8 +90,8 @@ int main() {
         var key = document.getElementById('keyInput').value;
         var result = document.getElementById('result');
         
-        if (key === "b1n4ry_bu5t3r") {
-            result.textContent = "Correct! The flag is: CTF{R3v3rse_3ng1n33r1ng_M4st3r}";
+        if (key === "betty") {
+            result.textContent = "Correct! The flag is: i_need_gopherchucks";
             result.style.color = "green";
         } else {
             result.textContent = "Incorrect key. Try again.";
@@ -106,20 +103,74 @@ int main() {
         var cCode = `
 #include <stdio.h>
 #include <string.h>
+#include <curl/curl.h>
 
-#define FLAG "CTF{R3v3rse_3ng1n33r1ng_M4st3r}"
-#define KEY "b1n4ry_bu5t3r"
+// Obfuscation function that generates the key
+void generate_key(char *key) {
+    key[0] = 'd' - 1;
+    key[1] = 'f' - 1;
+    key[2] = 'u' - 1;
+    key[3] = 'u' - 1;
+    key[4] = 'z' - 1;
+    key[5] = '\0';
+}
+
+// Function to send the key to an external server for validation
+int validate_key(char *key) {
+    CURL *curl;
+    CURLcode res;
+    int is_valid = 0;
+    
+    // Initialize CURL
+    curl = curl_easy_init();
+    if(curl) {
+        char post_data[50];
+        sprintf(post_data, "key=%s", key);  // Sending key as POST data
+
+        // Set the URL of the validation server
+        curl_easy_setopt(curl, CURLOPT_URL, "https://your-server.com/validate");
+
+        // Set the POST data
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_data);
+
+        // Perform the request and check the result
+        res = curl_easy_perform(curl);
+        if(res == CURLE_OK) {
+            printf("Server validation succeeded!\n");
+            is_valid = 1;
+        } else {
+            printf("Server validation failed: %s\n", curl_easy_strerror(res));
+        }
+
+        // Cleanup
+        curl_easy_cleanup(curl);
+    }
+    
+    return is_valid;
+}
 
 int main() {
-    char input[50];
-    printf("Enter the key: ");
+    char input[100];
+    char correct_key[6]; // The obfuscated key (generated)
+
+    // Generate the correct key
+    generate_key(correct_key);
+
+    // Prompt user for input
+    printf("Enter the secret key: ");
     scanf("%s", input);
-    
-    if (strcmp(input, KEY) == 0) {
-        printf("Correct! The flag is: %s\\n", FLAG);
+
+    // Validate the key with the server
+    if (strcmp(input, correct_key) == 0) {
+        if (validate_key(correct_key)) {
+            printf("Correct! The flag will be sent by the server.\n");
+        } else {
+            printf("Server validation failed.\n");
+        }
     } else {
-        printf("Incorrect key. Try again.\\n");
+        printf("Incorrect key. Try again.\n");
     }
+
     return 0;
 }`;
         
