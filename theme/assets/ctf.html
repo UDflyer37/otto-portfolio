@@ -216,13 +216,13 @@
         </div>
         
         <div class="challenge">
-          <h2>Challenge 3: Binary Buster (200 points)</h2>
+          <h2>Challenge 3: "Kung Pow: Enter the Code" (200 points)</h2>
           <div class="challenge-description">
-            <p>Download this binary file and reverse engineer it to find the flag: <a href="_/theme/challenge3.html" target="_blank">Challenge 3</a></p>
-            <p class="warning">Warning: This file is part of a cybersecurity challenge. Always analyze unknown binaries in a safe, isolated environment.</p>
+            <p>I forgot my key, can you help me find it? Reverse engineer the code on this page to find the key for the flag: <a href="_/theme/challenge3.html" target="_blank">Challenge 3</a></p>
+            <p class="warning">Warning: The code for this challenge is safe, but you should always analyze unknown code/binaries in a safe, isolated environment.</p>
           </div>
           <button class="hint-button" data-challenge="challenge3">Request Hint</button>
-          <div class="hint" id="challenge3-hint">The flag is hidden in a function that's never called directly.</div>
+          <div class="hint" id="challenge3-hint">The code calls to an inaccessible server to validate the key, but it looks like they left the way to generate the key exposed! Interpret the code to figure out how it is generating the key. Senesitive functions should always be kept hidden from potentially bad actors so they can't be reverse engineered!</div>
           <form class="flag-form" id="challenge3-form">
             <input type="text" placeholder="Enter flag" required>
             <button type="submit">Submit</button>
@@ -325,7 +325,7 @@
               isCorrect = flag.toLowerCase() === 'identity_theft_is_not_a_joke_jim';
               break;
             case 'challenge3':
-              isCorrect = flag.toLowerCase() === 'reverse_engineering_master';
+              isCorrect = flag.toLowerCase() === 'i_need_gopherchucks';
               break;
             case 'challenge4':
               isCorrect = flag.toLowerCase() === 'steganography_rocks';

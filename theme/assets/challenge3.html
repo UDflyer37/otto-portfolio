@@ -50,14 +50,14 @@
 </style>
 </head>
 <body>
-    <h1>Challenge 3: Binary Buster</h1>
+    <h1>Challenge 3: "Kung Pow: Enter the Code"</h1>
     
     <div class="warning">
-        <strong>Note:</strong> This is a simulated challenge. In a real CTF, you would download and analyze an actual binary file.
+        <strong>Note:</strong> This is a simulated challenge. Running the code on your local device will not connect with the server to verify the key. You must input the correct key into the prompt below to recieve the flag.
     </div>
 
     <h2>Challenge Description</h2>
-    <p>Your task is to reverse engineer the provided C code and find the correct key to unlock the flag.</p>
+    <p>Your task is to reverse engineer the provided C code and uncover the correct key to unlock the flag. (Capitalization counts here!)</p>
 
     <h2>Key Submission</h2>
     <input type="text" id="keyInput" placeholder="Enter the key">
@@ -66,21 +66,78 @@
 
     <div id="result"></div>
 
-    <h2>C Code (Simulated)</h2>
+    <h2>C Code</h2>
     <pre>
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
+#include <stdio.h>
+#include <string.h>
+#include <curl/curl.h>
+
+void generate_key(char *key) {
+    int i;
+    
+    int base_values[] = {96, 101, 118, 120, 127};  
+
+    for (i = 0; i < 5; i++) {
+        base_values[i] = base_values[i] + 3;
+        base_values[i] = base_values[i] * 2;
+        base_values[i] = base_values[i] / 2;
+        base_values[i] = base_values[i] - (i * 2);
+        base_values[i] = base_values[i] - 1;
+    }
+
+    for (i = 0; i < 5; i++) {
+        key[i] = (char)base_values[i];
+    }
+    key[5] = '\0';
+}
+
+int validate_key(char *key) {
+    CURL *curl;
+    CURLcode res;
+    int is_valid = 0;
+    
+    curl = curl_easy_init();
+    if(curl) {
+        char post_data[50];
+        sprintf(post_data, "key=%s", key);
+
+        curl_easy_setopt(curl, CURLOPT_URL, "https://fake-server.com/validate");
+
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_data);
+
+        res = curl_easy_perform(curl);
+        if(res == CURLE_OK) {
+            printf("Server validation succeeded!\n");
+            is_valid = 1;
+        } else {
+            printf("Server validation failed: %s\n", curl_easy_strerror(res));
+        }
+
+        curl_easy_cleanup(curl);
+    }
+    
+    return is_valid;
+}
 
 int main() {
-    char input[50];
-    printf("Enter the key: ");
+    char input[100];
+    char correct_key[6];
+
+    generate_key(correct_key);
+
+    printf("Enter the secret key: ");
     scanf("%s", input);
-    
-    if (strcmp(input, KEY) == 0) {
-        printf("Correct! The flag is: %s\n", FLAG);
+
+    if (strcmp(input, correct_key) == 0) {
+        if (validate_key(correct_key)) {
+            printf("Correct! The flag will be sent by the server.\n");
+        } else {
+            printf("Server validation failed.\n");
+        }
     } else {
         printf("Incorrect key. Try again.\n");
     }
+
     return 0;
 }
     </pre>
@@ -105,35 +162,39 @@ int main() {
 #include <string.h>
 #include <curl/curl.h>
 
-// Obfuscation function that generates the key
 void generate_key(char *key) {
-    key[0] = 'd' - 1;
-    key[1] = 'f' - 1;
-    key[2] = 'u' - 1;
-    key[3] = 'u' - 1;
-    key[4] = 'z' - 1;
+    int i;
+    
+    int base_values[] = {96, 101, 118, 120, 127};  
+
+    for (i = 0; i < 5; i++) {
+        base_values[i] = base_values[i] + 3;
+        base_values[i] = base_values[i] * 2;
+        base_values[i] = base_values[i] / 2;
+        base_values[i] = base_values[i] - (i * 2);
+        base_values[i] = base_values[i] - 1;
+    }
+
+    for (i = 0; i < 5; i++) {
+        key[i] = (char)base_values[i];
+    }
     key[5] = '\0';
 }
 
-// Function to send the key to an external server for validation
 int validate_key(char *key) {
     CURL *curl;
     CURLcode res;
     int is_valid = 0;
     
-    // Initialize CURL
     curl = curl_easy_init();
     if(curl) {
         char post_data[50];
-        sprintf(post_data, "key=%s", key);  // Sending key as POST data
+        sprintf(post_data, "key=%s", key);
 
-        // Set the URL of the validation server
-        curl_easy_setopt(curl, CURLOPT_URL, "https://your-server.com/validate");
+        curl_easy_setopt(curl, CURLOPT_URL, "https://fake-server.com/validate");
 
-        // Set the POST data
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_data);
 
-        // Perform the request and check the result
         res = curl_easy_perform(curl);
         if(res == CURLE_OK) {
             printf("Server validation succeeded!\n");
@@ -142,7 +203,6 @@ int validate_key(char *key) {
             printf("Server validation failed: %s\n", curl_easy_strerror(res));
         }
 
-        // Cleanup
         curl_easy_cleanup(curl);
     }
     
@@ -151,16 +211,13 @@ int validate_key(char *key) {
 
 int main() {
     char input[100];
-    char correct_key[6]; // The obfuscated key (generated)
+    char correct_key[6];
 
-    // Generate the correct key
     generate_key(correct_key);
 
-    // Prompt user for input
     printf("Enter the secret key: ");
     scanf("%s", input);
 
-    // Validate the key with the server
     if (strcmp(input, correct_key) == 0) {
         if (validate_key(correct_key)) {
             printf("Correct! The flag will be sent by the server.\n");
