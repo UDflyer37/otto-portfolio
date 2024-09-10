@@ -1,0 +1,139 @@
+<html><head><base href="https://ctf.alexanderotto.com/downloads/challenge3.bin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge 3: Binary Buster</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    h1, h2 {
+        color: #2c3e50;
+    }
+    pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    .warning {
+        background-color: #ffeb3b;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    #keyInput {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    #submitKey, #downloadCode {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    #submitKey:hover, #downloadCode:hover {
+        background-color: #2980b9;
+    }
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <h1>Challenge 3: Binary Buster</h1>
+    
+    <div class="warning">
+        <strong>Note:</strong> This is a simulated challenge. In a real CTF, you would download and analyze an actual binary file.
+    </div>
+
+    <h2>Challenge Description</h2>
+    <p>Your task is to reverse engineer the provided C code and find the correct key to unlock the flag.</p>
+
+    <h2>Key Submission</h2>
+    <input type="text" id="keyInput" placeholder="Enter the key">
+    <button id="submitKey">Submit Key</button>
+    <button id="downloadCode">Download C Code</button>
+
+    <div id="result"></div>
+
+    <h2>C Code (Simulated)</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define FLAG "CTF{R3v3rse_3ng1n33r1ng_M4st3r}"
+#define KEY "b1n4ry_bu5t3r"
+
+int main() {
+    char input[50];
+    printf("Enter the key: ");
+    scanf("%s", input);
+    
+    if (strcmp(input, KEY) == 0) {
+        printf("Correct! The flag is: %s\n", FLAG);
+    } else {
+        printf("Incorrect key. Try again.\n");
+    }
+    return 0;
+}
+    </pre>
+
+    <script>
+    document.getElementById('submitKey').addEventListener('click', function() {
+        var key = document.getElementById('keyInput').value;
+        var result = document.getElementById('result');
+        
+        if (key === "b1n4ry_bu5t3r") {
+            result.textContent = "Correct! The flag is: CTF{R3v3rse_3ng1n33r1ng_M4st3r}";
+            result.style.color = "green";
+        } else {
+            result.textContent = "Incorrect key. Try again.";
+            result.style.color = "red";
+        }
+    });
+
+    document.getElementById('downloadCode').addEventListener('click', function() {
+        var cCode = `
+#include <stdio.h>
+#include <string.h>
+
+#define FLAG "CTF{R3v3rse_3ng1n33r1ng_M4st3r}"
+#define KEY "b1n4ry_bu5t3r"
+
+int main() {
+    char input[50];
+    printf("Enter the key: ");
+    scanf("%s", input);
+    
+    if (strcmp(input, KEY) == 0) {
+        printf("Correct! The flag is: %s\\n", FLAG);
+    } else {
+        printf("Incorrect key. Try again.\\n");
+    }
+    return 0;
+}`;
+        
+        var blob = new Blob([cCode], {type: "text/plain"});
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "challenge3.c";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    </script>
+
+</body>
+</html>
