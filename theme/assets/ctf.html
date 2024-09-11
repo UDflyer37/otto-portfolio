@@ -234,11 +234,11 @@
         <div class="challenge">
           <h2>Challenge 4: Killer Rabbit of Caerbannog (175 points)</h2>
           <div class="challenge-description">
-            <p>Look how cute my dog is! No way he's hiding any secrets...</p>
-            <img src="_/theme/bennystego.png" alt="Steganography challenge image" width="500" height="375">
+            <p>Look how cute my dog is! No way he's hiding any secret files...</p>
+            <img src="_/theme/bennysteg.jpg" alt="Steganography challenge image" width="500" height="375">
           </div>
           <button class="hint-button" data-challenge="challenge4">Request Hint</button>
-          <div class="hint" id="challenge4-hint">It's possible to hide messages, files, or even code inside of images! Always be careful when downloading things online, even seemingly harmless photos could ruin your day.</div>
+          <div class="hint" id="challenge4-hint">It's possible to hide messages, files, or even code inside of images! Files can be extracted from images using opensource tools such as "steghide". Always be careful when downloading things online, even seemingly harmless photos could ruin your day. (not everything is protected with a password)</div>
           <form class="flag-form" id="challenge4-form">
             <input type="text" placeholder="Enter flag" required>
             <button type="submit">Submit</button>
@@ -332,7 +332,7 @@
               isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge4':
-              correctFlag = 'ATO{holy_hand_grenade}'
+              correctFlag = 'ATO{The_Holy_Hand_Grenade_of_Antioch}'
               isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge5':
