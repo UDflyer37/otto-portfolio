@@ -6,6 +6,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <style>
   :root {
     --primary-color: #000000;
@@ -248,15 +250,16 @@
         </div>
 
         <div class="challenge">
-          <h2>Challenge 5: Packet Detective (225 points)</h2>
+          <h2>Challenge 5: Lost and Found (225 points)</h2>
           <div class="challenge-description">
-            <p>We've captured some network traffic during a suspicious activity. Can you analyze it and find the hidden flag?</p>
-            <p>Download the packet capture file: <a href="https://ctf.alexanderotto.com/downloads/suspicious_traffic.pcap" download>suspicious_traffic.pcap</a></p>
+            <p>My wife and I went on an amazing honeymoon, but we can't remember where we went! Can you help me figure it out?</p>
+            <img src="_/theme/honeymoon.png" alt="Honeymoon" width="100%" height="375">
+            <div id="map" style="height: 400px; width: 100%;"></div>
           </div>
           <button class="hint-button" data-challenge="challenge5">Request Hint</button>
-          <div class="hint" id="challenge5-hint">Look for unusual HTTP requests. The flag might be hiding in plain sight.</div>
+          <div class="hint" id="challenge5-hint">Look closely at the terrain features and any structures visible from this ground-level perspective.</div>
           <form class="flag-form" id="challenge5-form">
-            <input type="text" placeholder="Enter flag" required>
+            <input type="text" placeholder="Enter the name of the location" required>
             <button type="submit">Submit</button>
           </form>
           <div class="challenge-status" id="challenge5-status"></div>
@@ -386,7 +389,37 @@
           }
         });
       });
+
+      const map = L.map('map').setView([34.0091, -112.3609], 14);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      const geoJsonData = {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [-112.389623, 33.996247],
+                  [-112.340218, 33.996247],
+                  [-112.340218, 33.972797],
+                  [-112.389623, 33.972797],
+                ]
+              ]
+            }
+          }
+        ]
+      };
+
+      L.geoJSON(geoJsonData).addTo(map);
+      map.fitBounds(L.geoJSON(geoJsonData).getBounds());
     });
+    
   </script>
 </body>
 </html>
