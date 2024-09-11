@@ -255,7 +255,7 @@
         </div>
 
         <div class="challenge">
-          <h2>Challenge 5: Lost and Found (225 points)</h2>
+          <h2>Challenge 5: Lost and Found (125 points)</h2>
           <div class="challenge-description">
             <p>My wife and I went on an amazing honeymoon to a desert oasis, but I can't remember the name of the resort! Can you help me figure it out? I remember flying into Pheonix, AZ and I was able to find this picture from our trip, maybe that will help!</p>
             <img src="_/theme/honeymoon.png" alt="Honeymoon" width="100%" height="375">
@@ -268,24 +268,24 @@
             <button type="submit">Submit</button>
           </form>
           <div class="challenge-status" id="challenge5-status"></div>
-          <div class="challenge-points" id="challenge5-points">Available Points: 225</div>
+          <div class="challenge-points" id="challenge5-points">Available Points: 125</div>
         </div>
 
         <div class="challenge">
-          <h2>Challenge 6: Digital Footprint (125 points)</h2>
+          <h2>Challenge 6: Where's The Dude? (225 points)</h2>
           <div class="challenge-description">
-            <p>Your task is to find the Twitter handle of a person using only their email address.</p>
-            <p>Email: johndoe1337@example.com</p>
-            <p>The flag is the Twitter handle (including the @ symbol) of this person.</p>
+            <p>I messed up some dudes rug and now I'm trying to find him. All I have is his email, but he keeps saying the same thing everytime I send him a message, I don't think he actaully reads his emails. Maybe he has an X (Twitter) page that I can DM him on, can you help me find his handle?</p>
+            <p>Email: thats.a.bummer.man1998@gmail.com</p>
+            <p>The flag is the Twitter handle (excluding the @ symbol).</p>
           </div>
           <button class="hint-button" data-challenge="challenge6">Request Hint</button>
-          <div class="hint" id="challenge6-hint">OSINT techniques can reveal surprising connections. Think about how people often use similar usernames across platforms.</div>
+          <div class="hint" id="challenge6-hint">OSINT techniques can reveal surprising connections. Even if your email/phone number isn't displayed on your social media profiles, people can still trace connections. Always be careful what you post online, you are not as anonymous as you might think! More information about X security policies can be found here: https://help.x.com/en/safety-and-security/email-and-phone-discoverability-settings</div>
           <form class="flag-form" id="challenge6-form">
-            <input type="text" placeholder="Enter flag" required>
+            <input type="text" placeholder="Flag Format: ATO{x_handle}" required>
             <button type="submit">Submit</button>
           </form>
           <div class="challenge-status" id="challenge6-status"></div>
-          <div class="challenge-points" id="challenge6-points">Available Points: 125</div>
+          <div class="challenge-points" id="challenge6-points">Available Points: 225</div>
         </div>
       </section>
     </div>
@@ -307,8 +307,8 @@
         challenge2: 150,
         challenge3: 200,
         challenge4: 175,
-        challenge5: 225,
-        challenge6: 125
+        challenge5: 125,
+        challenge6: 225
       };
       const hintUsed = {};
 
@@ -344,11 +344,11 @@
               isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge5':
-              correctFlag = 'ATO{wireshark_master_2023}'
+              correctFlag = 'ATO{castle_hot_springs}'
               isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
             case 'challenge6':
-              correctFlag = 'ATO{@johnd0ehack3r}'
+              correctFlag = 'ATO{dude_abides98}'
               isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
               break;
           }
