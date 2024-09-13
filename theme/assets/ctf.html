@@ -274,7 +274,7 @@
         <div class="challenge">
           <h2>Challenge 6: Where's The Dude? (225 points)</h2>
           <div class="challenge-description">
-            <p>I messed up some dudes rug and now I'm trying to find him. All I have is his email, but he keeps saying the same thing everytime I send him a message, I don't think he actaully reads his emails. Maybe he has an X (Twitter) page that I can DM him on, can you help me find his handle?</p>
+            <p>I messed up some dudes rug and now I'm trying to find him. All I have is his email, but he keeps saying the same thing everytime I send him a message; I don't think he actaully reads his emails. Maybe he has an X (Twitter) page that I can DM him on, can you help me find his handle?</p>
             <p class="warning">thats.a.bummer.man1998@gmail.com</p>
             <p>The flag is the Twitter handle (excluding the @ symbol).</p>
           </div>
@@ -298,6 +298,9 @@
   </footer>
 
   <script>
+    
+    //CHEATER, CHEATER! I OBFUSCATED THE JAVA SCRIPT TO MAKE IT HARDER! 
+
     document.addEventListener('DOMContentLoaded', (event) => {
       const forms = document.querySelectorAll('.flag-form');
       const hintButtons = document.querySelectorAll('.hint-button');
@@ -316,63 +319,7 @@
         document.getElementById('total-points').textContent = totalPoints;
       }
 
-      forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const challengeId = this.id.split('-')[0];
-          const flag = this.querySelector('input').value;
-          const statusElement = document.getElementById(`${challengeId}-status`);
-          const pointsElement = document.getElementById(`${challengeId}-points`);
-          
-          let isCorrect = false;
-          let correctFlag = '';
-          switch(challengeId) {
-            case 'challenge1':
-              correctFlag = 'ATO{what_are_you_doing_in_my_swamp}'
-              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
-              break;
-            case 'challenge2':
-              correctFlag = 'ATO{identity_theft_is_not_a_joke_jim}'
-              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
-              break;
-            case 'challenge3':
-              correctFlag = 'ATO{i_need_gopherchucks}'
-              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
-              break;
-            case 'challenge4':
-              correctFlag = 'ATO{The_Holy_Hand_Grenade_of_Antioch}'
-              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
-              break;
-            case 'challenge5':
-              correctFlag = 'ATO{castle_hot_springs}'
-              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
-              break;
-            case 'challenge6':
-              correctFlag = 'ATO{dude_abides98}'
-              isCorrect = flag.toLowerCase().trim() === correctFlag.toLowerCase().trim();
-              break;
-          }
-          
-          if (isCorrect && challengePoints[challengeId] > 0) {
-            let earnedPoints = challengePoints[challengeId];
-            if (hintUsed[challengeId]) {
-              earnedPoints = Math.floor(earnedPoints / 2);
-            }
-            totalPoints += earnedPoints;
-            challengePoints[challengeId] = 0;
-            statusElement.textContent = `Correct! You earned ${earnedPoints} points!`;
-            statusElement.style.color = 'green';
-            pointsElement.textContent = 'Points earned: ' + earnedPoints;
-            updateTotalPoints();
-          } else if (isCorrect) {
-            statusElement.textContent = 'Correct, but you\'ve already solved this challenge!';
-            statusElement.style.color = 'orange';
-          } else {
-            statusElement.textContent = 'Incorrect flag. Try again!';
-            statusElement.style.color = 'red';
-          }
-        });
-      });
+      function _0x23f4(_0x31bc1a,_0x275c4e){const _0xd40e86=_0x3b47();return _0x23f4=function(_0x9872a5,_0x1acbad){_0x9872a5=_0x9872a5-(-0x1b73*-0x1+0x1438+-0x397*0xd);let _0x502457=_0xd40e86[_0x9872a5];return _0x502457;},_0x23f4(_0x31bc1a,_0x275c4e);}const _0x35ebc1=_0x23f4;function _0x3b47(){const _0x23727b=['vunqD','ATO{identi','qHyBE','ault','MvtAb','ById','challenge3','submit','11FChoWT','tor','trim','bFOyG','aozzT','Points\x20ear','ly_Hand_Gr','stener','GStVl','getElement','flag.\x20Try\x20','Incorrect\x20','\x20points!','value','26gVJUSL','-points','challenge6','ATO{dude_a','floor','orange','68535YPrbzB','CbAfJ','ut\x20you\x27ve\x20','re_you_doi','hYZfT','split','-status','XdbRw','Correct,\x20b','toLowerCas','1554808niERNb','challenge!','RIaWE','lmWVJ','enade_of_A','nnDhP','preventDef','ng_in_my_s','challenge2','gs}','3qAwXBx','283344kCNhxP','ypGdg','665004CvQPcb','bKSGA','forEach','1108775mowFSt','gAPoC','challenge5','_hot_sprin','wamp}','red','_gopherchu','ke_jim}','ATO{what_a','cks}','addEventLi','Correct!\x20Y','BDqqC','GDwbH','ned:\x20','LEDel','challenge4','s_not_a_jo','color','jFVtD','lved\x20this\x20','OswEA','again!','bides98}','6hQkmni','ATO{castle','ty_theft_i','style','230KVPuyi','cPlWw','24367roToHD','ATO{The_Ho','vKprL','input','ATO{i_need','ou\x20earned\x20','TWIyC','hLVpr','green','xIxGr','already\x20so','textConten','pZNXK','ntioch}','querySelec','mfNNT','challenge1','603666clKCxu'];_0x3b47=function(){return _0x23727b;};return _0x3b47();}(function(_0x1a7d68,_0x5292c2){const _0x1546c2=_0x23f4,_0xeb8ee2=_0x1a7d68();while(!![]){try{const _0x3cb1da=-parseInt(_0x1546c2(0x10f))/(-0x20*0x137+0x75*-0x9+-0x2afe*-0x1)*(parseInt(_0x1546c2(0x137))/(0x9c2*0x1+0x1bf+0x147*-0x9))+parseInt(_0x1546c2(0x151))/(0x22be+0x1e0b+-0x2*0x2063)*(-parseInt(_0x1546c2(0x154))/(0x60f+0x1355+-0x1960))+-parseInt(_0x1546c2(0x157))/(0x4b7*-0x1+-0x39*-0x6b+-0x1317)*(-parseInt(_0x1546c2(0x109))/(0x18b6+-0x54+-0x185c))+parseInt(_0x1546c2(0x120))/(0x1741+0x162e+-0x16b4*0x2)+parseInt(_0x1546c2(0x147))/(-0x26e1+0x524+0x21c5)+-parseInt(_0x1546c2(0x13d))/(0x2*0x198+0x1c73*-0x1+0x1*0x194c)*(-parseInt(_0x1546c2(0x10d))/(0x1662+-0x241f*0x1+0x1*0xdc7))+parseInt(_0x1546c2(0x129))/(-0xbf1+-0x1*-0x8cb+0x331)*(parseInt(_0x1546c2(0x152))/(0x22d2*-0x1+-0x241*0x2+-0x12*-0x230));if(_0x3cb1da===_0x5292c2)break;else _0xeb8ee2['push'](_0xeb8ee2['shift']());}catch(_0x57f8d8){_0xeb8ee2['push'](_0xeb8ee2['shift']());}}}(_0x3b47,-0xa064+-0x11*-0x1979+0x2433a),forms[_0x35ebc1(0x156)](_0x4add85=>{const _0x3dc913=_0x35ebc1,_0x233905={'vKprL':_0x3dc913(0x112),'hLVpr':_0x3dc913(0x11f),'CbAfJ':_0x3dc913(0x15f)+_0x3dc913(0x140)+_0x3dc913(0x14e)+_0x3dc913(0x15b),'ypGdg':function(_0x4f330c,_0x389d5d){return _0x4f330c===_0x389d5d;},'lmWVJ':_0x3dc913(0x14f),'jFVtD':_0x3dc913(0x122)+_0x3dc913(0x10b)+_0x3dc913(0x102)+_0x3dc913(0x15e),'bKSGA':function(_0x352b25,_0x2aa41d){return _0x352b25===_0x2aa41d;},'mfNNT':_0x3dc913(0x127),'XdbRw':_0x3dc913(0x113)+_0x3dc913(0x15d)+_0x3dc913(0x160),'cPlWw':_0x3dc913(0x101),'gAPoC':_0x3dc913(0x110)+_0x3dc913(0x12f)+_0x3dc913(0x14b)+_0x3dc913(0x11c),'xIxGr':function(_0x81bba0,_0x287fa9){return _0x81bba0===_0x287fa9;},'OswEA':_0x3dc913(0x159),'aozzT':_0x3dc913(0x10a)+_0x3dc913(0x15a)+_0x3dc913(0x150),'pZNXK':_0x3dc913(0x139),'nnDhP':_0x3dc913(0x13a)+_0x3dc913(0x108),'BDqqC':function(_0x3ce0ac,_0x246fdf){return _0x3ce0ac>_0x246fdf;},'hYZfT':function(_0x1e2781,_0xcf0fee){return _0x1e2781/_0xcf0fee;},'TWIyC':_0x3dc913(0x117),'GStVl':function(_0xd2009d,_0x31b90a){return _0xd2009d+_0x31b90a;},'MvtAb':_0x3dc913(0x12e)+_0x3dc913(0x165),'qHyBE':function(_0x40c672){return _0x40c672();},'GDwbH':_0x3dc913(0x145)+_0x3dc913(0x13f)+_0x3dc913(0x119)+_0x3dc913(0x105)+_0x3dc913(0x148),'RIaWE':_0x3dc913(0x13c),'bFOyG':_0x3dc913(0x134)+_0x3dc913(0x133)+_0x3dc913(0x107),'vunqD':_0x3dc913(0x15c),'LEDel':_0x3dc913(0x128)};_0x4add85[_0x3dc913(0x161)+_0x3dc913(0x130)](_0x233905[_0x3dc913(0x100)],function(_0x55f32d){const _0x1c7dd6=_0x3dc913;_0x55f32d[_0x1c7dd6(0x14d)+_0x1c7dd6(0x124)]();const _0x513b78=this['id'][_0x1c7dd6(0x142)]('-')[-0xbc*-0x16+-0x1*-0x1e70+-0x2e98],_0x53d94d=this[_0x1c7dd6(0x11d)+_0x1c7dd6(0x12a)](_0x233905[_0x1c7dd6(0x111)])[_0x1c7dd6(0x136)],_0x3dc2cf=document[_0x1c7dd6(0x132)+_0x1c7dd6(0x126)](_0x513b78+_0x1c7dd6(0x143)),_0x48450e=document[_0x1c7dd6(0x132)+_0x1c7dd6(0x126)](_0x513b78+_0x1c7dd6(0x138));let _0x2f98ad=![],_0x1e747a='';switch(_0x513b78){case _0x233905[_0x1c7dd6(0x116)]:_0x1e747a=_0x233905[_0x1c7dd6(0x13e)],_0x2f98ad=_0x233905[_0x1c7dd6(0x153)](_0x53d94d[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)](),_0x1e747a[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)]());break;case _0x233905[_0x1c7dd6(0x14a)]:_0x1e747a=_0x233905[_0x1c7dd6(0x104)],_0x2f98ad=_0x233905[_0x1c7dd6(0x155)](_0x53d94d[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)](),_0x1e747a[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)]());break;case _0x233905[_0x1c7dd6(0x11e)]:_0x1e747a=_0x233905[_0x1c7dd6(0x144)],_0x2f98ad=_0x233905[_0x1c7dd6(0x153)](_0x53d94d[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)](),_0x1e747a[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)]());break;case _0x233905[_0x1c7dd6(0x10e)]:_0x1e747a=_0x233905[_0x1c7dd6(0x158)],_0x2f98ad=_0x233905[_0x1c7dd6(0x118)](_0x53d94d[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)](),_0x1e747a[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)]());break;case _0x233905[_0x1c7dd6(0x106)]:_0x1e747a=_0x233905[_0x1c7dd6(0x12d)],_0x2f98ad=_0x233905[_0x1c7dd6(0x155)](_0x53d94d[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)](),_0x1e747a[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)]());break;case _0x233905[_0x1c7dd6(0x11b)]:_0x1e747a=_0x233905[_0x1c7dd6(0x14c)],_0x2f98ad=_0x233905[_0x1c7dd6(0x155)](_0x53d94d[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)](),_0x1e747a[_0x1c7dd6(0x146)+'e']()[_0x1c7dd6(0x12b)]());break;}if(_0x2f98ad&&_0x233905[_0x1c7dd6(0x163)](challengePoints[_0x513b78],0x83d+-0x2*0x6ea+-0x9*-0x9f)){let _0x1d4f6e=challengePoints[_0x513b78];hintUsed[_0x513b78]&&(_0x1d4f6e=Math[_0x1c7dd6(0x13b)](_0x233905[_0x1c7dd6(0x141)](_0x1d4f6e,0x28c*-0x3+0x11ff+-0xa59))),totalPoints+=_0x1d4f6e,challengePoints[_0x513b78]=0x33*0x85+-0x2128+0x6a9,_0x3dc2cf[_0x1c7dd6(0x11a)+'t']=_0x1c7dd6(0x162)+_0x1c7dd6(0x114)+_0x1d4f6e+_0x1c7dd6(0x135),_0x3dc2cf[_0x1c7dd6(0x10c)][_0x1c7dd6(0x103)]=_0x233905[_0x1c7dd6(0x115)],_0x48450e[_0x1c7dd6(0x11a)+'t']=_0x233905[_0x1c7dd6(0x131)](_0x233905[_0x1c7dd6(0x125)],_0x1d4f6e),_0x233905[_0x1c7dd6(0x123)](updateTotalPoints);}else _0x2f98ad?(_0x3dc2cf[_0x1c7dd6(0x11a)+'t']=_0x233905[_0x1c7dd6(0x164)],_0x3dc2cf[_0x1c7dd6(0x10c)][_0x1c7dd6(0x103)]=_0x233905[_0x1c7dd6(0x149)]):(_0x3dc2cf[_0x1c7dd6(0x11a)+'t']=_0x233905[_0x1c7dd6(0x12c)],_0x3dc2cf[_0x1c7dd6(0x10c)][_0x1c7dd6(0x103)]=_0x233905[_0x1c7dd6(0x121)]);});}));
 
       hintButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -395,31 +342,7 @@
         });
       });
 
-      const map = L.map('map').setView([34.0091, -112.3609], 14);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-      }).addTo(map);
-
-      const geoJsonData = {
-        "type": "FeatureCollection",
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "Polygon",
-              "coordinates": [
-                [
-                  [-113.369130, 34.389709],
-                  [-110.553956, 34.389709],
-                  [-110.553956, 33.164040],
-                  [-113.369130, 33.164040],
-                ]
-              ]
-            }
-          }
-        ]
-      };
+      const _0x165c11=_0x3a72;function _0x54c8(){const _0x2a33c0=['Polygon','nstreetmap','106676oRCUXE','addTo','6047776CGFiBR','1744159WeKgQQ','FeatureCol','tileLayer','2112132PjRhVQ','ributors','setView','16256421KPowTL','.org/{z}/{','lection','Feature','}.tile.ope','8JgrzsM','©\x20OpenStre','18646518lgWPoF','20DtdFzr','5jWqwkY','12lAuoTc','5639540vXLApt','https://{s','map','x}/{y}.png','etMap\x20cont'];_0x54c8=function(){return _0x2a33c0;};return _0x54c8();}function _0x3a72(_0x46e04f,_0x5bef93){const _0x28c57d=_0x54c8();return _0x3a72=function(_0x4dbe40,_0x30bf15){_0x4dbe40=_0x4dbe40-(-0x384*-0x3+-0x4*-0xe6+-0xcae);let _0x56056f=_0x28c57d[_0x4dbe40];return _0x56056f;},_0x3a72(_0x46e04f,_0x5bef93);}(function(_0x2e0e14,_0x7baa){const _0x6362ea=_0x3a72,_0x1fbbe0=_0x2e0e14();while(!![]){try{const _0x4b6036=-parseInt(_0x6362ea(0x18f))/(-0x2635+0x796*0x4+0x26*0x35)+parseInt(_0x6362ea(0x18c))/(-0x1410+-0x1*0x1381+0x2793)+parseInt(_0x6362ea(0x177))/(-0x3eb+-0xebe+0x956*0x2)+parseInt(_0x6362ea(0x185))/(-0x155*0x1+0x22e*-0xf+-0x23*-0xf9)*(-parseInt(_0x6362ea(0x183))/(0x1*0x1007+-0x1c17+0x3*0x407))+parseInt(_0x6362ea(0x184))/(-0x957+-0x21e6+0x2b43)*(parseInt(_0x6362ea(0x18e))/(0x1561*-0x1+-0xd*-0x27+-0x1*-0x136d))+parseInt(_0x6362ea(0x17f))/(-0x21d1+-0x1*0xdf8+-0x1*-0x2fd1)*(-parseInt(_0x6362ea(0x17a))/(-0x203*0xd+0x1f9+0x1837))+-parseInt(_0x6362ea(0x182))/(-0x7b*-0x2+-0x3*0x97d+0x1b8b)*(-parseInt(_0x6362ea(0x181))/(-0x1*-0x253b+0x19ed+-0x3f1d));if(_0x4b6036===_0x7baa)break;else _0x1fbbe0['push'](_0x1fbbe0['shift']());}catch(_0x355620){_0x1fbbe0['push'](_0x1fbbe0['shift']());}}}(_0x54c8,0x71*0xb01+0x151cc4+0x57cc*-0x23));const map=L[_0x165c11(0x187)](_0x165c11(0x187))[_0x165c11(0x179)]([0x2*0xc50+0x3*0x4a+0x4*-0x657+0.009099999999996555,-(-0x38*-0x1c+-0x1ce6+-0xb9b*-0x2+0.3609000000000009)],0x2135+0x1ee6+0x1*-0x400d);L[_0x165c11(0x176)](_0x165c11(0x186)+_0x165c11(0x17e)+_0x165c11(0x18b)+_0x165c11(0x17b)+_0x165c11(0x188),{'attribution':_0x165c11(0x180)+_0x165c11(0x189)+_0x165c11(0x178)})[_0x165c11(0x18d)](map);const geoJsonData={'type':_0x165c11(0x190)+_0x165c11(0x17c),'features':[{'type':_0x165c11(0x17d),'properties':{},'geometry':{'type':_0x165c11(0x18a),'coordinates':[[[-(0x1*0x2227+0x2b8+-0x1*0x246e+0.3691299999999984),-0x221f*-0x1+0x2063+0x30*-0x162+0.3897090000000034],[-(0x25*-0x108+-0x1*0x1ab1+0x4147+0.5539559999999994),-0x25a1+0x1a3c+0xb87+0.3897090000000034],[-(0x16b2+0x1536+0x2b7a*-0x1+0.5539559999999994),-0x237d+0x1*0x1bb7+0x7e7+0.16403999999999996],[-(-0x2*0x944+0x2*0x9b6+0x73*-0x1+0.3691299999999984),0x1dd1+0x14dd+-0x328d+0.16403999999999996]]]}}]};
 
       L.geoJSON(geoJsonData).addTo(map);
       map.fitBounds(L.geoJSON(geoJsonData).getBounds());
