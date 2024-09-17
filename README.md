@@ -1,4 +1,4 @@
-# [Otto Portfolio](https://ottoportfolio.anvil.app/)
+# [Otto Portfolio](https://otto-portfolio.com/)
 
 Welcome to my virtual portfolio! This site showcases my journey, career, projects, and passions. I’ve also included a **personal Capture The Flag (CTF)** challenge for visitors to engage with, test their skills, and learn about various cybersecurity concepts.
 
