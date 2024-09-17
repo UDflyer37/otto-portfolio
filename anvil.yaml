@@ -1,7 +1,7 @@
 allow_embedding: false
 metadata: {description: 'This serves as the virtual portfolio for Alexander T. Otto. ', logo_img: 'asset:ATOicon.png', title: Otto Portfolio | Contact Me!}
-name: Otto Portfolio-portfolio
-package_name: Otto_Portfolio_portfolio
+name: Otto Portfolio
+package_name: Otto_Portfolio
 runtime_options:
   client_version: '3'
   server_spec: {base: python310-standard}
