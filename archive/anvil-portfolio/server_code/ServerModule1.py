@@ -9,6 +9,6 @@ def send_email(name, email, message):
   eastern_time = utc_now.astimezone(ZoneInfo("America/New_York"))
 
   anvil.email.send(from_name="Otto Portfolio Contact",
-                   to="ottoa98@gmail.com",
+                   to="ottoa98@yahoo.com",
                    subject=f"New Message from {name}: {eastern_time.strftime('%A %d %b %Y at %I:%M %p')}",
                    text=f"{name} ({email}) sent you a message: {message}")

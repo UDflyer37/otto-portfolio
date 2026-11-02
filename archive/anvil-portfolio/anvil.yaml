@@ -1,5 +1,5 @@
 allow_embedding: false
-metadata: {description: 'This serves as the virtual portfolio for Alexander T. Otto. ', logo_img: 'asset:ATOicon.png', title: Otto Portfolio | Contact Me!}
+metadata: {description: 'Alexander T. Otto - Research and Development Engineer and Army Cyber Officer. Applied AI/ML, RF sensing, and cyber operations.', logo_img: 'asset:ATOicon.png', title: Alexander T. Otto | R&D Engineer & Cyber Officer}
 name: Otto Portfolio
 package_name: Otto_Portfolio
 runtime_options:
