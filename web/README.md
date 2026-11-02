@@ -13,7 +13,7 @@ web/
 ├── assets/
 │   ├── img/            # optimized .webp photography + project shots
 │   │   └── brand/      # signature logo + icon set
-│   └── media/          # résumé PDF, AI-podcast mp3
+│   └── media/          # résumé PDF, podcast mp3
 └── ctf/                # three standalone challenges (kept byte-for-byte,
                         # only asset paths rewritten to be relative)
 ```
