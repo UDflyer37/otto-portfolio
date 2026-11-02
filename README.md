@@ -1,7 +1,6 @@
 # Otto Portfolio
 
-My personal site: one hand-written page of HTML, CSS and JavaScript, plus a
-capture-the-flag for anyone who wants to poke at it.
+My personal site plus a capture-the-flag for anyone who wants to poke at it.
 
 No framework, no build step, no dependencies. The site is the repository root.
 The Anvil app this site grew out of is kept in [`archive/anvil-portfolio`](archive/anvil-portfolio)
