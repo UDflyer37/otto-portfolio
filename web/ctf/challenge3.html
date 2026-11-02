@@ -1,0 +1,238 @@
+<html><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge 3: Binary Buster</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    h1, h2 {
+        color: #2c3e50;
+    }
+    pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    .warning {
+        background-color: #ffeb3b;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    #keyInput {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    #submitKey, #downloadCode {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    #submitKey:hover, #downloadCode:hover {
+        background-color: #2980b9;
+    }
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <h1>Challenge 3: "Kung Pow: Enter the Code"</h1>
+    
+    <div class="warning">
+        <strong>Note:</strong> This is a simulated challenge. Running the code on your local device will not connect with the server to verify the key. You must input the correct key into the prompt below to recieve the flag.
+    </div>
+
+    <h2>Challenge Description</h2>
+    <p>Your task is to reverse engineer the provided C code and uncover the correct key to unlock the flag. (Capitalization counts here!)</p>
+
+    <h2>Key Submission</h2>
+    <input type="text" id="keyInput" placeholder="Enter the key">
+    <button id="submitKey">Submit Key</button>
+    <button id="downloadCode">Download C Code</button>
+
+    <div id="result"></div>
+
+    <h2>C Code</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;curl/curl.h&gt;
+
+void generate_key(char *key) {
+    int i;
+    
+    int base_values[] = {96, 101, 118, 120, 127};  
+
+    for (i = 0; i < 5; i++) {
+        base_values[i] = base_values[i] + 3;
+        base_values[i] = base_values[i] * 2;
+        base_values[i] = base_values[i] / 2;
+        base_values[i] = base_values[i] - (i * 2);
+        base_values[i] = base_values[i] - 1;
+    }
+
+    for (i = 0; i < 5; i++) {
+        key[i] = (char)base_values[i];
+    }
+    key[5] = '\0';
+}
+
+int validate_key(char *key) {
+    CURL *curl;
+    CURLcode res;
+    int is_valid = 0;
+    
+    curl = curl_easy_init();
+    if(curl) {
+        char post_data[50];
+        sprintf(post_data, "key=%s", key);
+
+        curl_easy_setopt(curl, CURLOPT_URL, "https://fake-server.com/validate");
+
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_data);
+
+        res = curl_easy_perform(curl);
+        if(res == CURLE_OK) {
+            printf("Server validation succeeded!\n");
+            is_valid = 1;
+        } else {
+            printf("Server validation failed: %s\n", curl_easy_strerror(res));
+        }
+
+        curl_easy_cleanup(curl);
+    }
+    
+    return is_valid;
+}
+
+int main() {
+    char input[100];
+    char correct_key[6];
+
+    generate_key(correct_key);
+
+    printf("Enter the secret key: ");
+    scanf("%s", input);
+
+    if (strcmp(input, correct_key) == 0) {
+        if (validate_key(correct_key)) {
+            printf("Correct! The flag will be sent by the server.\n");
+        } else {
+            printf("Server validation failed.\n");
+        }
+    } else {
+        printf("Incorrect key. Try again.\n");
+    }
+
+    return 0;
+}
+    </pre>
+
+    <script>
+      
+    //CHEATER, CHEATER! I OBFUSCATED THE JAVA SCRIPT TO MAKE IT HARDER! 
+      
+    function _0x1775(_0x5688e8,_0x47ce3d){var _0x2fcc48=_0x5e47();return _0x1775=function(_0x38902d,_0x455c9f){_0x38902d=_0x38902d-(-0x8d*0x37+0x1bd5+-0x1*-0x2f9);var _0x19b655=_0x2fcc48[_0x38902d];return _0x19b655;},_0x1775(_0x5688e8,_0x47ce3d);}var _0x52f4a0=_0x1775;(function(_0x77a90b,_0x3e977b){var _0x4e725f=_0x1775,_0x27b940=_0x77a90b();while(!![]){try{var _0x52878c=parseInt(_0x4e725f(0x9d))/(-0x25b7+0x2161+-0xb*-0x65)*(-parseInt(_0x4e725f(0xab))/(0x97b+-0xbf1*-0x2+-0x215b))+-parseInt(_0x4e725f(0x83))/(0xd8a+-0x1f1a+-0xb*-0x199)*(parseInt(_0x4e725f(0x9a))/(-0x4c4+-0x2670+0x4*0xace))+parseInt(_0x4e725f(0x9f))/(0x1efe+-0x87b+-0x167e)*(-parseInt(_0x4e725f(0x98))/(-0x843+0x85+0x7c4))+-parseInt(_0x4e725f(0x8a))/(-0x22fc+0xcd7+0x162c)*(parseInt(_0x4e725f(0xa2))/(-0xf*-0x8b+-0x453+-0x3ca))+-parseInt(_0x4e725f(0x8c))/(-0x1a31+-0x922+0x235c)+parseInt(_0x4e725f(0x96))/(0x1b31+-0x9ee+0x1*-0x1139)*(-parseInt(_0x4e725f(0x89))/(-0x1*-0x561+0x2694+0x323*-0xe))+parseInt(_0x4e725f(0xa7))/(-0x17ca+0xa8d*-0x1+0x2263);if(_0x52878c===_0x3e977b)break;else _0x27b940['push'](_0x27b940['shift']());}catch(_0x32ab05){_0x27b940['push'](_0x27b940['shift']());}}}(_0x5e47,0xc969+-0x1c090+-0x1*-0x3599b),document[_0x52f4a0(0x91)+_0x52f4a0(0xa0)](_0x52f4a0(0x88))[_0x52f4a0(0x9c)+_0x52f4a0(0xa5)](_0x52f4a0(0x99),function(){var _0x5927c1=_0x52f4a0,_0x186061={'BHXzi':_0x5927c1(0x86),'WIWXo':_0x5927c1(0x93),'vOGqa':function(_0x1b6780,_0x4fa1a9){return _0x1b6780===_0x4fa1a9;},'bAZWq':_0x5927c1(0xa4),'dwqQz':_0x5927c1(0xa8)+_0x5927c1(0xa3)+_0x5927c1(0xa6)+_0x5927c1(0x8f)+_0x5927c1(0x8e),'GIjpr':_0x5927c1(0x8b),'kiEwU':_0x5927c1(0x8d)+_0x5927c1(0x92)+_0x5927c1(0xac),'RYWQB':_0x5927c1(0x97)},_0x419125=document[_0x5927c1(0x91)+_0x5927c1(0xa0)](_0x186061[_0x5927c1(0x94)])[_0x5927c1(0xad)],_0x2f8ac3=document[_0x5927c1(0x91)+_0x5927c1(0xa0)](_0x186061[_0x5927c1(0x84)]);_0x186061[_0x5927c1(0xaa)](_0x419125,_0x186061[_0x5927c1(0x87)])?(_0x2f8ac3[_0x5927c1(0x85)+'t']=_0x186061[_0x5927c1(0xa9)],_0x2f8ac3[_0x5927c1(0xa1)][_0x5927c1(0x90)]=_0x186061[_0x5927c1(0x95)]):(_0x2f8ac3[_0x5927c1(0x85)+'t']=_0x186061[_0x5927c1(0x9b)],_0x2f8ac3[_0x5927c1(0xa1)][_0x5927c1(0x90)]=_0x186061[_0x5927c1(0x9e)]);}));function _0x5e47(){var _0x33aa58=['2617497MecWZQ','Incorrect\x20','hucks}','ed_gopherc','color','getElement','key.\x20Try\x20a','result','BHXzi','GIjpr','257590zmmAuG','red','6dBfazt','click','4stYhjB','kiEwU','addEventLi','946JWOuKN','RYWQB','441920HdZCEA','ById','style','670024FaHOKs','he\x20flag\x20is','betty','stener',':\x20ATO{i_ne','12237744NPbaot','Correct!\x20T','dwqQz','vOGqa','556mqUPJf','gain.','value','335457ZQXDpc','WIWXo','textConten','keyInput','bAZWq','submitKey','11zJpSim','7NXxwps','green'];_0x5e47=function(){return _0x33aa58;};return _0x5e47();}
+
+    document.getElementById('downloadCode').addEventListener('click', function() {
+        var cCode = `
+#include <stdio.h>
+#include <string.h>
+#include <curl/curl.h>
+
+void generate_key(char *key) {
+    int i;
+    
+    int base_values[] = {96, 101, 118, 120, 127};  
+
+    for (i = 0; i < 5; i++) {
+        base_values[i] = base_values[i] + 3;
+        base_values[i] = base_values[i] * 2;
+        base_values[i] = base_values[i] / 2;
+        base_values[i] = base_values[i] - (i * 2);
+        base_values[i] = base_values[i] - 1;
+    }
+
+    for (i = 0; i < 5; i++) {
+        key[i] = (char)base_values[i];
+    }
+    key[5] = '\0';
+}
+
+int validate_key(char *key) {
+    CURL *curl;
+    CURLcode res;
+    int is_valid = 0;
+    
+    curl = curl_easy_init();
+    if(curl) {
+        char post_data[50];
+        sprintf(post_data, "key=%s", key);
+
+        curl_easy_setopt(curl, CURLOPT_URL, "https://fake-server.com/validate");
+
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_data);
+
+        res = curl_easy_perform(curl);
+        if(res == CURLE_OK) {
+            printf("Server validation succeeded!\n");
+            is_valid = 1;
+        } else {
+            printf("Server validation failed: %s\n", curl_easy_strerror(res));
+        }
+
+        curl_easy_cleanup(curl);
+    }
+    
+    return is_valid;
+}
+
+int main() {
+    char input[100];
+    char correct_key[6];
+
+    generate_key(correct_key);
+
+    printf("Enter the secret key: ");
+    scanf("%s", input);
+
+    if (strcmp(input, correct_key) == 0) {
+        if (validate_key(correct_key)) {
+            printf("Correct! The flag will be sent by the server.\n");
+        } else {
+            printf("Server validation failed.\n");
+        }
+    } else {
+        printf("Incorrect key. Try again.\n");
+    }
+
+    return 0;
+}`;
+        
+        var blob = new Blob([cCode], {type: "text/plain"});
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "challenge3.c";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    </script>
+
+</body>
+</html>
